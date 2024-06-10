@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  height: 100vh;
+}
+
+.products {
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.stepper-dots .MuiMobileStepper-dot {
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Varsayılan nokta rengi */
+}
+
+.stepper-dots .MuiMobileStepper-dotActive {
+  background-color: #8cca19;
+  /* Aktif noktanın rengi */
+}
+
+
+.drawer {
+  margin: 20px 10px;
+}
+
+.drawer h3 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #77a02a;
+}
+
+.images {
+  width: 100px;
+  height: 110px;
+  border-radius: 10px;
+  margin-right: 8px;
+}
+
+.title {
+  font-size: 16px;
+  margin-right: 10px;
+  width: 180px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  width: 70px;
+}
+
+.drawer button {
+  border: none;
+  width: 50px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background-color: #95bb4f;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.drawer button:hover,
+.drawer button:active {
+  background-color: #8cca19;
+}
+
+.amount {
+  text-align: center;
+  padding: 10px;
+  background-color: #95bb4f;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 35px;
+}
+
+/* footer */
+.page-footer {
+  height: 4rem;
+  background: #6a931d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-footer p {
+  color: #fff;
+}
+
+.footer-logo,
+.page-footer a {
+  color: rgb(2, 74, 2);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media(max-width: 600px) {
+  .page-footer {
+    width: 600px;
+  }
+}
