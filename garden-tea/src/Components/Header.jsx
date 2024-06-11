@@ -6,9 +6,15 @@ import NightlightIcon from '@mui/icons-material/Nightlight';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { IoIosSearch } from "react-icons/io";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../store/authSlice';
 
 function Header() {
     const [theme, setTheme] = useState(true);
+    const navigate = useNavigate();
+    const { isAuthenticated } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     const changeTheme = () => {
         const root = document.getElementById('root');
@@ -22,31 +28,71 @@ function Header() {
         setTheme(!theme);
     }
 
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#77a02a"
+    }
+
+    const handleLogout = () => {
+        dispatch(authActions.logout());
+        navigate('/');
+    }
 
     return (
         <div className='header'>
-            <div className='flex-row cursor'>
+            <div className='flex-row cursor'
+                onClick={() => navigate('/')}
+            >
                 <img src={logoImg} alt="tea logo" className='logoImg' />
                 <h1>Garden-to-Cup Tea</h1>
             </div>
             <div>
-                <a href="#" className='menu'>Prdoducts</a>
-                <a href="#" className='menu'>Favorites</a>
+                <NavLink
+                    to='/product-list'
+                    className='menu'
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >Products</NavLink>
+                <NavLink
+                    to='/favorites'
+                    className='menu'
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >Favorites</NavLink>
             </div>
             <div className="flex-row">
                 <div className='input'>
                     <IoIosSearch className='icon' id='icon' />
                     <input type="text" placeholder='search something...' />
                 </div>
-                <div>
-                    {theme ?
-                        <NightlightIcon className='icons' onClick={changeTheme} /> : <WbSunnyIcon className='icons' onClick={changeTheme} />}
 
-                    <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
-                    <AccountBoxIcon className='icons' />
-                </div>
+                {theme ?
+                    <NightlightIcon className='icons' onClick={changeTheme} /> : <WbSunnyIcon className='icons' onClick={changeTheme} />}
+
+                <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
+                <li>
+                    <AccountBoxIcon className='icons' style={{ width: '25px', height: '25px', marginLeft: "5px", marginTop: "5px" }} />
+                    <ul className="dropdown" id='dropdown'>
+                        {isAuthenticated ? (
+                            <li >
+                                <a className="link2" onClick={handleLogout}>Signout</a>
+                            </li>
+                        ) : (
+                            <> <li >
+                                <a className="link1" onClick={() => navigate('/signin')}>Signin</a>
+                            </li>
+                                <li >
+                                    <a className="link2" onClick={() => navigate('/signup')}>Signup</a>
+                                </li>
+                            </>
+                        )}
+
+                    </ul>
+
+                </li>
+
             </div>
         </div>
+
     )
 }
 

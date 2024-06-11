@@ -8,6 +8,10 @@ import './index.css'
 
 import Home from './pages/Home.jsx';
 import RootLayout from './routes/RootLayout.jsx';
+import ProductsList from './Components/ProductsList.jsx';
+import Favorites from './Components/Favorites.jsx';
+import Signin from './Components/Signin.jsx';
+import Signup from './Components/Signup.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,22 @@ const router = createBrowserRouter([
           {
             path: '',
             element: <Home />
+          },
+          {
+            path: '/product-list',
+            element: <ProductsList />
+          },
+          {
+            path: '/favorites',
+            element: <Favorites />
+          },
+          {
+            path: '/signin',
+            element: <Signin />
+          },
+          {
+            path: '/signup',
+            element: <Signup />
           }
         ]
       }
