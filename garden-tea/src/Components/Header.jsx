@@ -9,12 +9,21 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store/authSlice';
+import MenuIcon from '@mui/icons-material/Menu';
+import { searchProducts } from '../store/productSlice';
 
 function Header() {
     const [theme, setTheme] = useState(true);
+    const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const { isAuthenticated } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+
+    const handleSearch = (event) => {
+        const searchQuery = event.target.value;
+        setQuery(searchQuery)
+        dispatch(searchProducts(searchQuery));
+    }
 
     const changeTheme = () => {
         const root = document.getElementById('root');
@@ -47,6 +56,7 @@ function Header() {
                 <img src={logoImg} alt="tea logo" className='logoImg' />
                 <h1>Garden-to-Cup Tea</h1>
             </div>
+            {/* over 1000 */}
             <div>
                 <NavLink
                     to='/product-list'
@@ -62,7 +72,7 @@ function Header() {
             <div className="flex-row">
                 <div className='input'>
                     <IoIosSearch className='icon' id='icon' />
-                    <input type="text" placeholder='search something...' />
+                    <input type="text" placeholder='search something...' value={query} onChange={handleSearch} />
                 </div>
 
                 {theme ?
@@ -87,9 +97,21 @@ function Header() {
                         )}
 
                     </ul>
-
                 </li>
-
+                {/* under 1000 */}
+                <li className="bar">
+                    <MenuIcon className='icons' style={{ width: '30px', height: '30px', marginLeft: '5px', }} />
+                    <ul className='dropdown' id='dropdown'>
+                        <NavLink
+                            to='/product-list'
+                            className='link1'
+                        >Products</NavLink>
+                        <NavLink
+                            to='/favorites'
+                            className='link2'
+                        >Favorites</NavLink>
+                    </ul>
+                </li>
             </div>
         </div>
 

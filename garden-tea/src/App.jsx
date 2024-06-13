@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Container from '@mui/material/Container';
+import Loading from "./Components/Loading";
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Container>
         <Outlet />
+        <Loading />
       </Container>
     </>
   )

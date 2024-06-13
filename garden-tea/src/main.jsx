@@ -12,6 +12,7 @@ import ProductsList from './Components/ProductsList.jsx';
 import Favorites from './Components/Favorites.jsx';
 import Signin from './Components/Signin.jsx';
 import Signup from './Components/Signup.jsx';
+import ProductDetails from './Components/ProductDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path: '/signup',
             element: <Signup />
+          },
+          {
+            path: '/product-details/:id',
+            element: <ProductDetails />
           }
         ]
       }

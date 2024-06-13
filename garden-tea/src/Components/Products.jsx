@@ -3,11 +3,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../store/productSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Products({ product }) {
     const { id, image, title, price } = product;
     const { favorites } = useSelector(state => state.product);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleToggleFavorite = (productId) => {
         dispatch(toggleFavorite(productId))
@@ -24,7 +26,7 @@ function Products({ product }) {
                 <h3>{price}$</h3>
             </div>
             <div className="flex-row">
-                <button className='detailbtn'>Go details</button>
+                <button className='detailbtn' onClick={() => navigate('/product-details/' + id)}>Go details</button>
             </div>
         </div>
     )
