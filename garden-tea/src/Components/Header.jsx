@@ -3,6 +3,7 @@ import '../Styles/Header.css';
 import logoImg from '../assets/naturelogo.png';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightlightIcon from '@mui/icons-material/Nightlight';
+import Badge from '@mui/material/Badge';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { IoIosSearch } from "react-icons/io";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -11,12 +12,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store/authSlice';
 import MenuIcon from '@mui/icons-material/Menu';
 import { searchProducts } from '../store/productSlice';
+import { setDrawer } from '../store/basketSlice';
 
 function Header() {
     const [theme, setTheme] = useState(true);
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const { isAuthenticated } = useSelector(state => state.auth);
+    const { products } = useSelector(state => state.basket);
     const dispatch = useDispatch();
 
     const handleSearch = (event) => {
@@ -27,12 +30,16 @@ function Header() {
 
     const changeTheme = () => {
         const root = document.getElementById('root');
+        const dropdown = document.getElementById('dropdown');
+
         if (theme) {
             root.style.backgroundColor = 'black';
             root.style.color = '#fff';
+            dropdown.style.backgroundColor = 'black'
         } else {
             root.style.backgroundColor = '#fff';
             root.style.color = 'black';
+            dropdown.style.backgroundColor = '#fff';
         }
         setTheme(!theme);
     }
@@ -78,7 +85,9 @@ function Header() {
                 {theme ?
                     <NightlightIcon className='icons' onClick={changeTheme} /> : <WbSunnyIcon className='icons' onClick={changeTheme} />}
 
-                <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
+                <Badge badgeContent={products.length} color="success" onClick={() => dispatch(setDrawer())} >
+                    <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
+                </Badge>
                 <li>
                     <AccountBoxIcon className='icons' style={{ width: '25px', height: '25px', marginLeft: "5px", marginTop: "5px" }} />
                     <ul className="dropdown" id='dropdown'>

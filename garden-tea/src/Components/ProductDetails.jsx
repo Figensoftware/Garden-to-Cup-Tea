@@ -2,9 +2,10 @@ import { useParams } from 'react-router-dom';
 import '../Styles/ProductDetails.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedProduct } from '../store/productSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
+import { addToBasket } from '../store/basketSlice';
 
 
 function ProductDetails() {
@@ -12,6 +13,15 @@ function ProductDetails() {
     const { products, selectedProducts } = useSelector(state => state.product);
     const { image, title, price, description } = selectedProducts;
     const dispatch = useDispatch();
+    const [count, setCount] = useState(0);
+
+    const increment = () => {
+        setCount(count + 1);
+    }
+
+    const decrement = () => {
+        setCount(count - 1);
+    }
 
     useEffect(() => {
         getProductById();
@@ -27,6 +37,17 @@ function ProductDetails() {
         })
     }
 
+    const addBasket = () => {
+        const payload = {
+            id,
+            price,
+            title,
+            image,
+            description,
+            count
+        }
+        dispatch(addToBasket(payload));
+    }
 
     return (
         <div className='product-details'>
@@ -38,11 +59,11 @@ function ProductDetails() {
                 <p className='details'>{description}</p>
                 <h1 className='details'>{price}$</h1>
                 <div className="counter">
-                    <CiCircleMinus className='iconf' />
-                    <span>0</span>
-                    <CiCirclePlus className='icont' />
+                    <CiCircleMinus className='iconf' onClick={decrement} />
+                    <span>{count}</span>
+                    <CiCirclePlus className='icont' onClick={increment} />
                 </div>
-                <div className="btn">
+                <div className="btn" onClick={addBasket}>
                     Add to basket
                 </div>
             </div>

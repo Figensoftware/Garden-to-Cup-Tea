@@ -22,6 +22,7 @@
   height: 100%;
 }
 
+
 .products {
   flex-wrap: wrap;
   margin-top: 50px;
@@ -119,6 +120,6 @@
 
 @media(max-width: 600px) {
   .page-footer {
-    width: 600px;
+    width: 550px;
   }
 }

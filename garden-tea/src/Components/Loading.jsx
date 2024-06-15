@@ -9,16 +9,18 @@ function Loading() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(setLoading());
+        dispatch(setLoading(true));
+        setTimeout(() => {
+            dispatch(setLoading(false));
+        }, 1000);
     }, [])
 
 
     return (
-        <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={loading}>
+        <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
             <CircularProgress color="inherit" />
-
         </Backdrop>
+
     )
 }
 

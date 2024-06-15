@@ -33,16 +33,19 @@
     margin-left: 10px;
     font-weight: bold;
     margin-top: 30px;
+    user-select: none;
 }
 
 .iconf {
     margin-right: 16px;
     cursor: pointer;
+    user-select: none;
 }
 
 .icont {
     margin-left: 16px;
     cursor: pointer;
+    user-select: none;
 }
 
 

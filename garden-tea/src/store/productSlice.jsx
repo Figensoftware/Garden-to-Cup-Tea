@@ -36,11 +36,16 @@ const productSlice = createSlice({
         },
         setLoading(state, action) {
             state.loading = action.payload;
+        },
+        removeFavorite(state, action) {
+            const productId = action.payload;
+            state.favorites = state.favorites.filter(id => id !== productId);
+            localStorage.setItem('favorites', JSON.stringify(state.favorites));
         }
 
 
     }
 });
 
-export const { setSelectedProduct, searchProducts, toggleFavorite, setLoading } = productSlice.actions;
+export const { setSelectedProduct, searchProducts, toggleFavorite, setLoading, removeFavorite } = productSlice.actions;
 export default productSlice.reducer;

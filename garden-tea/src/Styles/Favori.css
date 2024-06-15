@@ -45,6 +45,12 @@
     margin-left: 60px;
 }
 
+.det {
+    margin-left: 60px;
+    color: #6e8641;
+    cursor: pointer;
+}
+
 .favoribtn {
     border: none;
     margin: 10px;
@@ -60,6 +66,18 @@
 .favoribtn:hover,
 .favoribtn:active {
     background-color: #8cca19;
+}
+
+.emptyfavori {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 150px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: #8cca19 2px solid;
+    padding: 60px 10px;
 }
 
 @media(max-width: 1000px) {
