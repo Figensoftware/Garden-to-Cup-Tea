@@ -118,8 +118,8 @@
   cursor: pointer;
 }
 
-@media(max-width: 600px) {
-  .page-footer {
-    width: 550px;
-  }
+@media(max-width: 700px) {
+  /* .page-footer {
+    width: 100%;
+  } */
 }

@@ -82,45 +82,47 @@ function Header() {
                     <input type="text" placeholder='search something...' value={query} onChange={handleSearch} />
                 </div>
 
-                {theme ?
-                    <NightlightIcon className='icons' onClick={changeTheme} /> : <WbSunnyIcon className='icons' onClick={changeTheme} />}
+                <div className='shape'>
+                    {theme ?
+                        <NightlightIcon className='icons' onClick={changeTheme} /> : <WbSunnyIcon className='icons' onClick={changeTheme} />}
 
-                <Badge badgeContent={products.length} color="success" onClick={() => dispatch(setDrawer())} >
-                    <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
-                </Badge>
-                <li>
-                    <AccountBoxIcon className='icons' style={{ width: '25px', height: '25px', marginLeft: "5px", marginTop: "5px" }} />
-                    <ul className="dropdown" id='dropdown'>
-                        {isAuthenticated ? (
-                            <li >
-                                <a className="link2" onClick={handleLogout}>Signout</a>
-                            </li>
-                        ) : (
-                            <> <li >
-                                <a className="link1" onClick={() => navigate('/signin')}>Signin</a>
-                            </li>
+                    <Badge badgeContent={products.length} color="success" onClick={() => dispatch(setDrawer())} >
+                        <ShoppingBasketIcon className='icons' style={{ marginRight: "3px" }} />
+                    </Badge>
+                    <li>
+                        <AccountBoxIcon className='icons' style={{ width: '25px', height: '25px', marginLeft: "5px", marginTop: "5px" }} />
+                        <ul className="dropdown" id='dropdown'>
+                            {isAuthenticated ? (
                                 <li >
-                                    <a className="link2" onClick={() => navigate('/signup')}>Signup</a>
+                                    <a className="link2" onClick={handleLogout}>Signout</a>
                                 </li>
-                            </>
-                        )}
+                            ) : (
+                                <> <li >
+                                    <a className="link1" onClick={() => navigate('/signin')}>Signin</a>
+                                </li>
+                                    <li >
+                                        <a className="link2" onClick={() => navigate('/signup')}>Signup</a>
+                                    </li>
+                                </>
+                            )}
 
-                    </ul>
-                </li>
-                {/* under 1000 */}
-                <li className="bar">
-                    <MenuIcon className='icons' style={{ width: '30px', height: '30px', marginLeft: '5px', }} />
-                    <ul className='dropdown' id='dropdown'>
-                        <NavLink
-                            to='/product-list'
-                            className='link1'
-                        >Products</NavLink>
-                        <NavLink
-                            to='/favorites'
-                            className='link2'
-                        >Favorites</NavLink>
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                    {/* under 1000 */}
+                    <li className="bar">
+                        <MenuIcon className='icons' style={{ width: '30px', height: '30px', marginLeft: '5px', }} />
+                        <ul className='dropdown' id='dropdown'>
+                            <NavLink
+                                to='/product-list'
+                                className='link1'
+                            >Products</NavLink>
+                            <NavLink
+                                to='/favorites'
+                                className='link2'
+                            >Favorites</NavLink>
+                        </ul>
+                    </li>
+                </div>
             </div>
         </div>
 
