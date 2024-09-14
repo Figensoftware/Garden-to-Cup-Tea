@@ -63,7 +63,7 @@ function Header() {
                 <img src={logoImg} alt="tea logo" className='logoImg' />
                 <h1>Garden-to-Cup Tea</h1>
             </div>
-            {/* over 1000 */}
+            {/* responsive design over 1000 */}
             <div>
                 <NavLink
                     to='/product-list'
@@ -108,7 +108,7 @@ function Header() {
 
                         </ul>
                     </li>
-                    {/* under 1000 */}
+                    {/*responsive design under 1000 */}
                     <li className="bar">
                         <MenuIcon className='icons' style={{ width: '30px', height: '30px', marginLeft: '5px', }} />
                         <ul className='dropdown' id='dropdown'>
