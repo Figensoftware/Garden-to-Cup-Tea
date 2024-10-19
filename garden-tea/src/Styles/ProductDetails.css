@@ -37,13 +37,13 @@
 }
 
 .iconf {
-    margin-right: 16px;
     cursor: pointer;
     user-select: none;
+    margin-left: 16px;
 }
 
 .icont {
-    margin-left: 16px;
+    margin-right: 16px;
     cursor: pointer;
     user-select: none;
 }

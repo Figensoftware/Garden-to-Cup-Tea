@@ -59,9 +59,9 @@ function ProductDetails() {
                 <p className='details'>{description}</p>
                 <h1 className='details'>{price}$</h1>
                 <div className="counter">
-                    <CiCircleMinus className='iconf' onClick={decrement} />
-                    <span>{count}</span>
                     <CiCirclePlus className='icont' onClick={increment} />
+                    <span>{count}</span>
+                    <CiCircleMinus className='iconf' onClick={decrement} />
                 </div>
                 <div className="btn" onClick={addBasket}>
                     Add to basket

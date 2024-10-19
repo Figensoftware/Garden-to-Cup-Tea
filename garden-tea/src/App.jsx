@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(calculateBasket())
-  }, []);
+  }, [products]);
 
   const deleteBasket = (id) => {
     dispatch(deleteFromBasket({ id, count: 1 }))
@@ -45,7 +45,7 @@ function App() {
             <div>
               {products.length > 0 ? (
                 <p className="amount">
-                  Total Amount: {totalAmount.toFixed(2)}
+                  Total Amount: {totalAmount.toFixed(2)}$
                 </p>
               ) : (
                 <p>You don't have any product in your basket!</p>
